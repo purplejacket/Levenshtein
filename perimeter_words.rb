@@ -1,4 +1,6 @@
 class PerimeterWords
+  attr_reader :perimeter
+  
   def initialize perimeter, corpus
     @perimeter = perimeter
     @corpus = corpus

@@ -9,4 +9,8 @@ class Levenshtein
   def corpus_size
     @corpus.size
   end
+  
+  def clique_size word
+    1
+  end
 end
