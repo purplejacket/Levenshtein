@@ -15,6 +15,7 @@ class PerimeterHash
     retval += add_a_letter_at_each_position(word)
     retval += change_a_letter_at_each_position(word)
     retval += remove_a_letter_at_each_position(word)
+    retval -= [word]
     retval
   end
   
@@ -26,7 +27,6 @@ class PerimeterHash
       @@alphabet.each do |letter|
         w = String.new word
         w.insert(position, letter)
-        puts w
         retval << w
       end
     end
@@ -42,7 +42,6 @@ class PerimeterHash
         retval << w
       end
     end
-    retval -= [word]
     retval
   end
 
