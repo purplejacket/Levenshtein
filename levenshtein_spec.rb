@@ -11,8 +11,10 @@ describe Levenshtein do
     lev_3.corpus_size.should == 3
   end
   
-  it "evaluates clique size" do
-    @lev.clique_size('causativenesses').should == 1
+  it "evaluates clique" do
+    @lev.clique('causativenesses').should == 'causativenesses'
   end
+  
+  
   
 end
