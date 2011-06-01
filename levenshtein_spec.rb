@@ -10,4 +10,6 @@ describe Levenshtein do
     lev_3 = Levenshtein.new('3.word.list')
     lev_3.corpus_size.should == 3
   end
+  
+  
 end
