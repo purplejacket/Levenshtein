@@ -1,11 +1,15 @@
-class PerimeterHash
+class PerimeterWords
   def initialize perimeter, corpus
     @perimeter = perimeter
     @corpus = corpus
   end
   
   def variants
-    @perimeter.keys.inject([]) { |accumulator, word| accumulator += levenshtein_word_variants(word) }
+    @perimeter.inject([]) { |accumulator, word| accumulator += levenshtein_word_variants(word) }
+  end
+  
+  def hits
+    variants.inject([]) { |accumulator, variant| @corpus[variant] ? (accumulator << variant) : accumulator }
   end
   
   private
@@ -38,7 +42,7 @@ class PerimeterHash
     (0..(word.size - 1)).each do |position|
       @@alphabet.each do |letter|
         w = String.new word
-        w[position] = letter.clone
+        w[position] = letter
         retval << w
       end
     end
