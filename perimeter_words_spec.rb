@@ -39,12 +39,12 @@ describe PerimeterWords do
   
   
   describe "next_perimeter" do
-    xit "is evaluated correctly when there are no words inside the clique yet" do
-      perimeter = {'aa' => true}
-      pwords = PerimeterWords.new(perimeter, @corpus, {})
-      expected_hits = {  :todo => :TODO  }
-      hits = pwords.hits
-      Set.new(hits).should == Set.new(expected_hits)
+    it "is evaluated correctly when there are no words inside the clique yet" do
+      perimeter_hash = {'aa' => true}
+      perimeter_words = PerimeterWords.new(perimeter_hash, @corpus, {})
+      expected_next = {'a' => true, 'ab' => true, 'xaa' => true}
+      next_perimeter = perimeter_words.next_perimeter
+      next_perimeter.should == expected_next
     end
   end
   

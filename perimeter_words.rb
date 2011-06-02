@@ -12,7 +12,10 @@ class PerimeterWords
   end
   
   def next_perimeter
-    variants.inject([]) { |accumulator, variant| @corpus[variant] ? (accumulator << variant) : accumulator }
+    variants.keys.inject({}) do |accumulator, word| 
+      accumulator[word] = true if @corpus[word]
+      accumulator
+    end
   end
   
   def words
