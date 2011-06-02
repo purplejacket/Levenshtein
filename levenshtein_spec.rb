@@ -12,7 +12,8 @@ describe Levenshtein do
   end
   
   it "evaluates clique" do
-    @lev.clique('causativenesses').should == 'causativenesses'
+    @lev.clique('causativenesses').should == %w(causativenesses)
+    @lev.clique('causative').should == %w(causative causatives)
   end
   
   

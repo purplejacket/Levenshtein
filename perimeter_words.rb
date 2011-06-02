@@ -1,6 +1,4 @@
 class PerimeterWords
-  attr_reader :perimeter
-  
   def initialize perimeter, corpus
     @perimeter = perimeter
     @corpus = corpus
@@ -12,6 +10,10 @@ class PerimeterWords
   
   def hits
     variants.inject([]) { |accumulator, variant| @corpus[variant] ? (accumulator << variant) : accumulator }
+  end
+  
+  def words
+    @perimeter
   end
   
   private

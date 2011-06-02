@@ -1,3 +1,5 @@
+require 'perimeter_words.rb'
+
 class Levenshtein
   def initialize word_list
     @corpus = {}
@@ -11,6 +13,14 @@ class Levenshtein
   end
   
   def clique word
-    'causativenesses'
+    words_in_clique = {}
+    perimeter = PerimeterWords.new([word], @corpus)
+    while true do
+      size = retval.size
+      retval += perimeter.words
+      break if size == retval.size
+      perimeter = PerimeterWords.new(perimeter.hits, @corpus)
+    end
+    retval
   end
 end
