@@ -9,7 +9,7 @@ end
 
 describe PerimeterWords do
   before do
-    @corpus = {'aa' => true, 'a' => true, 'ab' => true, 'xaa' => true, 'b' => true, 'bb' => true, 'mississippi' => true}
+    @corpus = {'aa' => true, 'a' => true, 'ab' => true, 'xaa' => true, 'aza' => true, 'b' => true, 'bb' => true, 'mississippi' => true}
   end
   
   describe "variants" do
@@ -42,10 +42,19 @@ describe PerimeterWords do
     it "is evaluated correctly when there are no words inside the clique yet" do
       perimeter_hash = {'aa' => true}
       perimeter_words = PerimeterWords.new(perimeter_hash, @corpus, {})
-      expected_next = {'a' => true, 'ab' => true, 'xaa' => true}
+      expected_next = {'a' => true, 'ab' => true, 'xaa' => true, 'aza' => true}
       next_perimeter = perimeter_words.next_perimeter
       next_perimeter.should == expected_next
     end
+    
+    it "is evaluated correctly when words exist inside the clique already" do
+      perimeter_hash = {'aa' => true}
+      perimeter_words = PerimeterWords.new(perimeter_hash, @corpus, {'xaa' => true, 'bb' => true})
+      expected_next = {'a' => true, 'ab' => true, 'aza' => true}
+      next_perimeter = perimeter_words.next_perimeter
+      next_perimeter.should == expected_next
+    end
+    
   end
   
 end

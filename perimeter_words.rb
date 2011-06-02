@@ -13,7 +13,7 @@ class PerimeterWords
   
   def next_perimeter
     variants.keys.inject({}) do |accumulator, word| 
-      accumulator[word] = true if @corpus[word]
+      accumulator[word] = true if @corpus[word] && !@words_inside_clique[word]
       accumulator
     end
   end
