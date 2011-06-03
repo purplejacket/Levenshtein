@@ -1,3 +1,4 @@
+# AUTHOR: Rodrigo
 
 # @corpus : dict of words
 # @inside : hits with traversed edges
