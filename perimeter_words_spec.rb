@@ -53,7 +53,6 @@ describe PerimeterWords do
       expected_next = {'a' => true, 'ab' => true, 'aza' => true}
       perimeter_words.next_perimeter.should == expected_next
     end
-    
   end
   
 end

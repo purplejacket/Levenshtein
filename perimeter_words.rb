@@ -1,5 +1,3 @@
-require 'ruby-debug'
-
 class PerimeterWords
   def initialize perimeter, corpus, words_inside_clique
     @perimeter = perimeter
@@ -20,6 +18,10 @@ class PerimeterWords
   
   def words
     @perimeter
+  end
+  
+  def expand
+    @perimeter = next_perimeter
   end
   
   private

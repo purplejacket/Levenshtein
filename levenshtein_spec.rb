@@ -12,10 +12,9 @@ describe Levenshtein do
   end
   
   it "evaluates clique" do
-    @lev.clique('causativenesses').should == %w(causativenesses)
-    @lev.clique('causative').should == %w(causative causatives)
+    @lev.clique('causativenesses').should == {'causativenesses' => true}
+    @lev.clique('causative').should == {'causative' => true, 'causatives' => true}
+    @lev.clique('causatives').should == {'causative' => true, 'causatives' => true}
+    @lev.clique('cause').should == {"causers"=>true, "causer"=>true, "cauter"=>true, "causes"=>true, "causeys"=>true, "cautels"=>true, "cautel"=>true, "causen"=>true, "causey"=>true, "caused"=>true, "cause"=>true}
   end
-  
-  
-  
 end

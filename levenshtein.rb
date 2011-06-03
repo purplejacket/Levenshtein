@@ -14,13 +14,13 @@ class Levenshtein
   
   def clique word
     words_in_clique = {}
-    perimeter = PerimeterWords.new([word], @corpus)
+    perimeter = PerimeterWords.new({word => true}, @corpus, words_in_clique)
     while true do
-      size = retval.size
-      retval += perimeter.words
-      break if size == retval.size
-      perimeter = PerimeterWords.new(perimeter.hits, @corpus)
+      size = words_in_clique.size
+      words_in_clique.merge! perimeter.words
+      break if size == words_in_clique.size
+      perimeter.expand
     end
-    retval
+    words_in_clique
   end
 end
