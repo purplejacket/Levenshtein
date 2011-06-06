@@ -54,8 +54,10 @@ def gen_inside
   end 
 end
 
-t0 = Time.now
+puts "running setup"
 setup
+puts "running gen_inside"
+t0 = Time.now
 gen_inside
 t1 = Time.now
 puts "elapsed time: #{t1-t0}"
